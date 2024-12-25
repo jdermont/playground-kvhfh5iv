@@ -6,7 +6,7 @@ One-hots in oware work well, because they distinguish empty pits, 2 and 3 seeds 
 
 ![oware](oware.png "Oware")
 
-Indexes per pits in the image above are { 1, 1, 1, 16, 2, 4, 1, 1, 5, 0, 2, 3, 5, 6 }
+Indexes per pits (last 2 are scores) in the image above are: { 1, 1, 1, 16, 2, 4, 1, 1, 5, 0, 2, 3, 5, 6 }
 
 As index inputs for the net: { 1, 27, 53, 94, 106, 134, 157, 183, 213, 234, 262, 289, 317, 344 }
 
