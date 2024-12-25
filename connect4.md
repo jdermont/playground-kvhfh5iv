@@ -4,7 +4,27 @@ My kind of failed attempts: simple inputs for red, blue. Some experiments for us
 
 CNN (convolutional neural network) seems a natural choice, but I have never done them, they are relatively slow to learn and inference so probably I would need to change my search algorithm accordingly as well. I decided to experiment more with my usual approach.
 
-Experiment: add "doesn't-matter" disc to inputs. In some positions it doesn't matter if disc is blue or red - it can't form any 4-in-row anymore. If we mask those and just use piece "doesn't-matter" as another input, it should denoise the inputs, especially in almost full positions, right? Well, that was not the case, at least not as much as I hoped. The net learned better, there was less overfitting but any benefits were thwarted by calculating those additional discs and there were more changes per move.
+Experiment: add "doesn't-matter" disc to inputs. In some positions it doesn't matter if disc is blue or red - it can't form any 4-in-row anymore. If we mask those and just use piece "doesn't-matter" as another input, it should denoise the inputs, especially in almost full positions, right? 
+
+```
+211221.11
+122122.22
+112211.21
+221112.12
+211221.11
+122112.22
+212212111
+
+xxxxx1.11
+xxxx22.22
+xxxxx1.xx
+xxxx12.xx
+xxxx21.11
+xxxxx2.22
+xxxxxx11x
+```
+
+Well, that was not the case, at least not as much as I hoped. The net learned better, there was less overfitting but any benefits were thwarted by calculating those additional discs and there were more changes per move.
 
 Success: N-tuples. Those are used in N-Tuple Neural Network, which is efficient memory-based neural network, usually without hidden layers. Extensively used in [othello](https://arxiv.org/abs/1406.1509), or standard [connect-4](https://www.researchgate.net/publication/235219697_Reinforcement_Learning_with_N-tuples_on_the_Game_Connect-4). N-tuples can have various shapes, for connect 4 I use every 4-in-row tuples. Those will be the inputs for my neural network. They are very sparse, take a lot of space, but they are very fast to calculate. There are 126 4-in-rows, and each 4-in-row can have 1 of 3^4=81 values, so 126x81=10206 inputs. Quite big, thus hidden layer has to be very small. With 8 hidden units, there are already around 80k weights, so 20k characters left for actual code. I had to be creative on how to efficiently extract the 4-tuples from position, and how to get only those changed during a move. There are at most 10 changed 4-tuples during move. Given the net is relatively small computionally, more time is spent on other parts of the search than NN inference.
 
