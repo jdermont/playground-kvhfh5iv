@@ -10,15 +10,11 @@ So there were 24x64=1536 inputs (a little less because for example white's home 
 
 ![breakthrough](breakthrough.png "Breakthrough")
 
-Indexes per squares in the image above are: { 1, 1, 1, 16, 2, 4, 1, 1, 5, 0, 2, 3, 5, 6 }
-
-As index inputs for the net (assuming top left is square is 0): { 1, 27, 53, 94, 106, 134, 157, 183, 213, 234, 262, 289, 317, 344 }
+In the above image we can see the indexes of the contents of squares. If this is black to move, add 12 to each index.
 
 
 ## Present
 
-Then after some hiatus I decided to rewrite breakthrough learning framework. I decided to test simple inputs. White and black pawns only. So 128 inputs, but because due to extended solver, no my pawns on enemy house and no enemy pawn in my home row and no my pawns in enemy home row will ever be used in the network, so there are effectively 112 inputs. Because using rotation, if there is my pawn below enemy home row (and this is my move) then I win, so no need for my pawns below enemy home row as well. So 104 inputs in total. Because they wasted much less space, I could use bigger hidden layer. And lo and behold, those inputs are better than my old complicated one. It required at least 320 hidden nodes, but because 2, at most 3 inputs change per move, the speed decrease didn't occur. Moreover, less time is spent to extract features from position. And the more hidden units in the layer, the better it played. As of writing this article, I have 720 hidden units, 1 hidden layer in breakthrough.
-
-For the image above, the index inputs for the net are: { 1 2, 3, }
+Then after some hiatus I decided to rewrite breakthrough learning framework. I decided to test simple inputs. White and black pawns only. So 128 inputs, but because due to extended solver, no my pawns in enemy house and no enemy pawn in my home row and no my pawns in enemy home row will ever be used in the network, so there are effectively 112 inputs. Because using rotation, if there is my pawn below enemy home row (and this is my move) then I win, so no need for my pawns below enemy home row as well. So 104 inputs in total. Because they wasted much less space, I could use bigger hidden layer. And lo and behold, those inputs are better than my old complicated one. It required at least 320 hidden nodes, but because 2, at most 3 inputs change per move, the speed decrease didn't occur. Moreover, less time is spent to extract features from position. And the more hidden units in the layer, the better it played. As of writing this article, I have 720 hidden units, 1 hidden layer in breakthrough.
 
 As you can see, sometimes simpler is better. I learned a lot and changed my learning methodology several times. Some things have to be revised, perhaps they are no more needed. For example TD-Gammon utilized additional features in its inputs, but [more recent experiments show](http://www.scholarpedia.org/article/User:Gerald_Tesauro/Proposed/Td-gammon#Performance_Results) they may have been not needed after all.
