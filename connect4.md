@@ -7,13 +7,13 @@ CNN (convolutional neural network) seems a natural choice, but I have never done
 Experiment: add "dead" disc to inputs. In some positions it doesn't matter if disc is blue or red - it can't form any 4-in-row anymore. If we mask those and just use dead discs as another input, it should denoise the inputs, especially in almost full positions, right? 
 
 ```
-211221.11   xxxxx1.11
-122122.22   xxxx22.22
-112211.21   xxxxx1.xx
-221112.12   xxxx12.xx
-211221.11   xxxx21.11
-122112.22   xxxxx2.22
-212212111   xxxxxx11x
+211221.11    xxxxx1.11
+122122.22    xxxx22.22
+112211.21    xxxxx1.xx
+221112.12 => xxxx12.xx
+211221.11    xxxx21.11
+122112.22    xxxxx2.22
+212212111    xxxxxx11x
 ```
 
 Well, that was not the case, at least not as much as I hoped. The net learned better, there was less overfitting but any benefits were thwarted by calculating those additional discs and there were more changes per move.
