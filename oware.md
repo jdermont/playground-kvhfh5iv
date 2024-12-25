@@ -4,7 +4,7 @@ This one is simple. There are 12 pits and 2 scores. I use pure one-hots in this 
 
 One-hots in oware work well, because they distinguish empty pits, 2 and 3 seeds pits from the others, so the network automatically gets to know something special about them. I know a guy who used 14 scalar inputs, but when he switched to one-hots his bot achieved better play level at 10x less training games.
 
-[oware](oware.png "oware")
+![oware](oware.png "Oware")
 
 Indexes per pits in the image above are { 1, 1, 1, 16, 2, 4, 1, 1, 5, 0, 2, 3, 5, 6 }
 
