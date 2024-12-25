@@ -6,3 +6,5 @@ plan:
   statement: oware.md
 - title: Breakthrough
   statement: breakthrough.md
+- title: Connect 4 & Yavalath
+  statement: connect4.md
