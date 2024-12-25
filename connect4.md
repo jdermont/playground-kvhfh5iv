@@ -4,7 +4,7 @@ My kind of failed attempts: simple inputs for red, blue. Some experiments for us
 
 CNN (convolutional neural network) seems a natural choice, but I have never done them, they are relatively slow to learn and inference so probably I would need to change my search algorithm accordingly as well. I decided to experiment more with my usual approach.
 
-Experiment: add "doesn't-matter" disc to inputs. In some positions it doesn't matter if disc is blue or red - it can't form any 4-in-row anymore. If we mask those and just use piece "doesn't-matter" as another input, it should denoise the inputs, especially in almost full positions, right? 
+Experiment: add "dead" disc to inputs. In some positions it doesn't matter if disc is blue or red - it can't form any 4-in-row anymore. If we mask those and just use dead discs as another input, it should denoise the inputs, especially in almost full positions, right? 
 
 ```
 211221.11   xxxxx1.11
