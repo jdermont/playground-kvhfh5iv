@@ -1,13 +1,24 @@
-# Oware abapa
+# Breakthrough
 
-This one is simple. There are 12 pits and 2 scores. I use pure one-hots in this game, even for scores. There are exactly 14 active inputs ('ones') out of possible 14x26=364 inputs, for each position. Each pit can have 0 up to 25 seeds (any more I cap at 25) and each score can be from 0 to 25 (again capping at 25). I could probably use scalar values for scores, as the more the merrier, but for simplicity they are one-hoted as well. When it is second player to move, I rotate the pits and switch scores, so the network always thinks it is first player. Because for most moves there are many chages in position, I don't use partial updates here, I just evaluate each position fully.
+## Former
 
-One-hots in oware work well, because they distinguish empty pits, 2 and 3 seeds pits from the others, so the network automatically gets to know something special about them. I know a guy who used 14 scalar inputs, but when he switched to one-hots his bot achieved better play level at 10x less training games.
+This was second game when I practiced NN and was succesful in it. At the time my learning framework was quite different, and I used to use minimax (alpha-beta) for training. Many changes occurred since then.
 
-![oware](oware.png "Oware")
+For breakthrough I used to have more complicated inputs. Each square, aside from being empty, black pawn or white pawn, each square could be also attacked, protected or both. So the indexes for each square goes like this: 0 - empty, 1 - white, 2 - black, +3 if square attacked by white pawn, +6 if square attacked by black pawn. And +12 if side to move was black. Yes, in the old times I had different inputs for the side to move, effectively doubling parameters and wasting precious space. It was at the times when I just learned how to utilize NNs and backpropagation values seemed simple then, less wrong sign errors to occur.
 
-Indexes per pits (last 2 are scores) in the image above are: { 1, 1, 1, 16, 2, 4, 1, 1, 5, 0, 2, 3, 5, 6 }
+So there were 24x64=1536 inputs (a little less because for example white's home row can't be attacked by white pawns). The network distinguished protected and attacked pawn from unprotected one. This came from my standard eval, where I would penalty attacked unprotected pawn and it was winning more. Up to 6 squares could be changed per move. I used 48 hidden units in 1 hidden layer. It was winning 100% against any non-NN bots at the time. Not much changed until others started using NNs as well and crushed me. Later I added second hidden layer, it was slower but slightly better. In the meantime I used neural networks in other games, evolving my learning framework and search algorithms.
 
-As index inputs for the net: { 1, 27, 53, 94, 106, 134, 157, 183, 213, 234, 262, 289, 317, 344 }
+![breakthrough](breakthrough.png "Breakthrough")
 
-As raw inputs: { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+Indexes per squares in the image above are: { 1, 1, 1, 16, 2, 4, 1, 1, 5, 0, 2, 3, 5, 6 }
+
+As index inputs for the net (assuming top left is square is 0): { 1, 27, 53, 94, 106, 134, 157, 183, 213, 234, 262, 289, 317, 344 }
+
+
+## Present
+
+Then after some hiatus I decided to rewrite breakthrough learning framework. I decided to test simple inputs. White and black pawns only. So 128 inputs, but because due to extended solver, no my pawns on enemy house and no enemy pawn in my home row and no my pawns in enemy home row will ever be used in the network, so there are effectively 112 inputs. Because using rotation, if there is my pawn below enemy home row (and this is my move) then I win, so no need for my pawns below enemy home row as well. So 104 inputs in total. Because they wasted much less space, I could use bigger hidden layer. And lo and behold, those inputs are better than my old complicated one. It required at least 320 hidden nodes, but because 2, at most 3 inputs change per move, the speed decrease didn't occur. Moreover, less time is spent to extract features from position. And the more hidden units in the layer, the better it played. As of writing this article, I have 720 hidden units, 1 hidden layer in breakthrough.
+
+For the image above, the index inputs for the net are: { 1 2, 3, }
+
+As you can see, sometimes simpler is better. I learned a lot and changed my learning methodology several times. Some things have to be revised, perhaps they are no more needed. For example TD-Gammon utilized additional features in its inputs, but [more recent experiments show](http://www.scholarpedia.org/article/User:Gerald_Tesauro/Proposed/Td-gammon#Performance_Results) they may have been not needed after all.
