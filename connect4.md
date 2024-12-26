@@ -29,6 +29,8 @@ There are 126 4-tuples in connect 4, overlapping horizontal, vertical and diagon
 
 # Yavalath
 
-This is similar to connect 4. Simple inputs for red and blue were not successful. Of course it was better than pure mcts, but nowhere near the thing I have now. Just like in connect 4, I use 4-tuples in yavalath. This was easy because I already used the pattern to check for wins and loses. There are 102 4-in-rows in yavalath, thus 102x81=8262. With 16 hidden units thats 132k weights (66k chars) and this is the net uploaded to leaderboard.
+This is similar to connect 4. Simple inputs for red and blue were not successful. Of course it was better than pure mcts, but nowhere near the thing I have now. But the person I know uses those simple inputs and it works well for him. Once again, probably there is something lacking in my learning methodology. 
+
+Just like in connect 4, I use 4-tuples in yavalath. This was easy because I already used the pattern to check for wins and loses. There are 102 4-in-rows in yavalath, thus 102x81=8262. With 16 hidden units thats 132k weights (66k chars) and this is the net uploaded to the arena.
 
 Interestingly, it is less susceptible to early traps even without booking - when it loses, it is in 18+ rounds, not as early as 12 then even with booking. Again, I have trained bigger network which is much better but I can't upload it due to size limit.
