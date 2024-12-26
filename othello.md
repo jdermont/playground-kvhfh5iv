@@ -8,6 +8,8 @@ History: [N-Tuple Neural Network](https://repository.essex.ac.uk/3820/1/NTupleOt
 
 Four 8-in-rows, 1 3x3 corners. Plus their symmetries and rotations: 16 8-in-rows (8 horizontal, 8 vertical), 4 3x3 corners. Additional feature inputs: 16 black discs, 29 white discs, 5 black frontiers, 13 white frontiers, 10 black moves, 5 white moves. Despite white having more discs, this is very bad situation for white.
 
+When side to move is white: switch black and white stones, don't forget switching moves as well, so the net thinks it's first player. Weights size: 3^9=20k, 4x3^8=26k, + 6 from other features; around 56k total.
+
 ## Present
 
 Taking ideas from common features used in othello, each square can be: empty, black normal stone, white normal stone, black frontier stone, white frontier stone, black&white potential moves, black potential move, white potential move. So either 7 or 8 states per square if you count empty separately, which I do. At this point I don't know if having empty in inputs helps or hurts, but I'm not motivated yet to do extensive tests. So there are 8x64=512 inputs. And it works! It is much better than hiddenless n-tuple network. 160 hidden units, so around 82k weights. I'm not motivated yet to double the weights which are probably better, but maybe if some better bot appears on the leaderboard...
