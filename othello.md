@@ -16,12 +16,11 @@ Taking ideas from common features used in othello, each square can be: empty, bl
 
 But this is not the net I have uploaded. I did test other set of inputs, the one without frontier disks, so 6x64=384 inputs and 240 hidden units. It appears the strength is similar to the above net. Maybe frontier discs isn't that important feature that should be done separately hmm?
 
-![othello](othello.png "Othello NN")
+![othello nn](othellon.png "Othello NN")
 
-... ...
+In the above image we can see the indexes of the contents of squares (without the frontier discs inputs).
 
-
-Another feature to test in the future is stable discs, the ones that can't ever be flipped. But again I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs. Once again, I'm waiting for someone to beat me.
+Another feature to test in the future would be stable discs, the ones that can't ever be flipped. But again I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs exactly. Once again, I'm waiting for someone to beat me.
 
 
 # Ataxx
