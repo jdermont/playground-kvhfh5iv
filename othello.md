@@ -18,7 +18,10 @@ But this is not the net I have uploaded. I did test other set of inputs, the one
 
 ![othello](othello.png "Othello NN")
 
-Another feature to test in the future is stable discs, the ones that can't be flipped ever. But again I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs. Once again, I'm waiting for someone to beat me.
+... ...
+
+
+Another feature to test in the future is stable discs, the ones that can't ever be flipped. But again I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs. Once again, I'm waiting for someone to beat me.
 
 
 # Ataxx
