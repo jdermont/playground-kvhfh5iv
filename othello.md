@@ -14,7 +14,7 @@ When side to move is white: switch black and white stones, don't forget switchin
 
 Taking ideas from common features used in othello, each square can be: empty, black normal stone, white normal stone, black frontier stone, white frontier stone, black&white potential moves, black potential move, white potential move. So either 7 or 8 states per square if you count empty separately, which I do. At this point I don't know if having empty in inputs helps or hurts, but I'm not motivated yet to do extensive tests. So there are 8x64=512 inputs. And it works! It is much better than hiddenless n-tuple network. 160 hidden units, so around 82k weights. I'm not motivated yet to double the weights which are probably better, but maybe if some better bot appears on the leaderboard...
 
-But this is not the net I have uploaded. I did test other set of inputs, the one without frontier disks, so 6x64=384 inputs and 240 hidden units. It appears the strength is similar to the above net. Maybe frontier discs isn't that important feature that should be done separately hmm?
+But this is not the net I have uploaded. I did test other set of inputs, the one without frontier discs, so 6x64=384 inputs and 240 hidden units. It appears the strength is similar to the above net. Maybe frontier discs isn't that important feature that should be done separately hmm?
 
 ![othello nn](othellon.png "Othello NN")
 
