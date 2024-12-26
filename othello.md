@@ -8,7 +8,7 @@ History: [N-Tuple Neural Network](https://repository.essex.ac.uk/3820/1/NTupleOt
 
 Four 8-in-rows, 1 3x3 corners. Plus their symmetries and rotations: 16 8-in-rows (8 horizontal, 8 vertical), 4 3x3 corners. Additional feature inputs: 16 black discs, 29 white discs, 5 black frontiers, 13 white frontiers, 10 black moves, 5 white moves. Despite white having more discs, this is very bad situation for white.
 
-When side to move is white: switch black and white stones, don't forget switching moves as well, so the net thinks it's first player. Weights size: 3^9=20k, 4x3^8=26k, + 6 from other features; around 56k total.
+When side to move is white: switch black and white stones, don't forget switching moves as well, so the net thinks it's first player. Weights size: 3^9=20k, 4x3^8=26k, + 6 from other features; around 46k total.
 
 ## Present
 
