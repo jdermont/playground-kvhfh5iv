@@ -8,3 +8,5 @@ plan:
   statement: breakthrough.md
 - title: Connect 4 & Yavalath
   statement: connect4.md
+- title: Othello & Ataxx
+  statement: connect4.md
