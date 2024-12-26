@@ -22,6 +22,13 @@ Success: N-tuples. Those are used in N-Tuple Neural Network, which is efficient 
 
 Nevertheless, it was big success. Almost every new iteration was better than previous one, and I was confident that when locally bot was better than the others, it will be higher in the leaderboard. I managed to learn to save 2 weights per 1 utf16 char, albeit with less precision, so right now my net in connect 4 has 16 hidden units thus arund 160k weights. Locally I trained much bigger net, with 64 hidden units and it is much better, winning over 70% games, but due to codesize limit I can't upload it. Maybe one day I will use it as teacher network and try some knowledge distilation methods. Possibilities for experimentation are vast. One way think of N-tuples as a poor man's convolutional neural network.
 
+![c4](c4.png "Connect 4")
+
+There are 126 4-tuples in connect 4, overlapping horizontal, vertical and diagonal. Index of tuple 1 from the image is 1012(3)=32, tuple 2 is 0000(3)=0, tuple 3 is 1221(3)=52.
+
+
 # Yavalath
 
-This is similar to connect 4. Simple inputs for red and blue were not succesful, it was better than pure mcts, but nowhere near the thing I have now. Just like in connect 4, I use 4-tuples in yavalath and there are 102 4-in-rows, thus 102x81=8262. With 16 hidden units thats 132k weights (66k chars) and this is the net uploaded to leaderboard. Interestingly, it is less susceptible to early traps even without booking - when it loses, it is in 18+ rounds, not as early as 12 then even with booking. Again, I trained bigger network which is better but I can't upload it.
+This is similar to connect 4. Simple inputs for red and blue were not successful. Of course it was better than pure mcts, but nowhere near the thing I have now. Just like in connect 4, I use 4-tuples in yavalath. This was easy because I already used the pattern to check for wins and loses. There are 102 4-in-rows in yavalath, thus 102x81=8262. With 16 hidden units thats 132k weights (66k chars) and this is the net uploaded to leaderboard.
+
+Interestingly, it is less susceptible to early traps even without booking - when it loses, it is in 18+ rounds, not as early as 12 then even with booking. Again, I have trained bigger network which is much better but I can't upload it due to size limit.
