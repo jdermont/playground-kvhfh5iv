@@ -1,23 +1,47 @@
-# Othello
+# Ultimate Tic Tac Toe
 
-## History
+UTTT resisted my attempts to NN it for quite long time. One thing was I had already put much effort into improving mcts enhancements for UTTT, so further improvements would be harder to achieve. Another thing was I needed to improve my learning framework and pipeline, as well the inputs and efficient feature extraction from the position. But I won the battle, the NN is much stronger than the mcts ever was. There are 15 possible states for each square (I take empty into account). 81x15=1215 inputs. I did some caching to get them efficiently, as well to calculate the partial difference.
 
-History: [N-Tuple Neural Network](https://repository.essex.ac.uk/3820/1/NTupleOthello.pdf), N-tuples patterns: 4 8-in-row, 1 3x3 corner and their symmetries. Added other features: number of discs, number of frontier discs (discs next to empty space), my possible moves and enemy possible moves if he were to move. No hidden layer, the network was just perceptron. It was incredibly fast to learn and inference. My bot was among the top. In my first attempts to use neural network, simple one-hots failed miserably, as predicted. Long N-tuples naturally capture distant interdependent features, simple one-hots do not, at least without special tricks.
+Code for getting the features goes like this, per miniboard:
 
-![othello](othello.png "Othello N-tuples")
+```c++
+    vector<int> getInputs(bool isToMoveBoard) {
+      vector<int> inputs(9);
+      for (int i=0; i < 9; i++) {
+        if (isOver()) {
+          int w = getWinner();
+          inputs[i] = w == PLAYER_X ? 0 : w == PLAYER_O ? 1 : 2;
+        } else {
+          int p = 1 << (i%9);
+          if (p&gameState) { // it is X
+            inputs[i] = isToMoveBoard ? 3 : 4;
+          } else if (p&(gameState>>9)) { // it is O
+            inputs[i] = isToMoveBoard ? 5 : 6;
+          } else {
+            makeMove(PLAYER_X,i%9);
+            bool wouldXWin = isOver(); // if X were to move here, it would won the miniboard
+            undoMove(PLAYER_X,i%9);
+            makeMove(PLAYER_O,i%9);
+            bool wouldOWin = isOver(); // if O were to move here, it would won the miniboard
+            undoMove(PLAYER_O,i%9);
+            if (wouldXWin&&wouldOWin) {
+                inputs[i] = isToMoveBoard ? 9 : 10;
+            } else if (wouldXWin) {
+                inputs[i] = isToMoveBoard ? 11 : 12;
+            } else if (wouldOWin) {
+                inputs[i] = isToMoveBoard ? 13 : 14;
+            } else {
+                inputs[i] = isToMoveBoard ? 7 : 8;
+            }
+          }
+        }
+      }
+      return inputs;
+    }
+```
 
-Four 8-in-rows, 1 3x3 corners. Plus their symmetries and rotations: 16 8-in-rows (8 horizontal, 8 vertical), 4 3x3 corners. Additional feature inputs: 16 black discs, 29 white discs, 5 black frontiers, 13 white frontiers, 10 black moves, 5 white moves. Despite white having more discs, this is very bad situation for white.
+As you can see, the inputs almost double wether this miniboard is active or not.
 
-When side to move is white: switch black and white stones, don't forget switching moves as well, so the net thinks it's first player. Weights size: 3^9=20k, 4x3^8=26k, + 6 from other features; around 46k total.
+![uttt](uttt.png "UTTT")
 
-## Present
-
-Taking ideas from common features used in othello, each square can be: empty, black normal stone, white normal stone, black frontier stone, white frontier stone, black&white potential moves, black potential move, white potential move. So either 7 or 8 states per square if you count empty separately, which I do. At this point I don't know if having empty in inputs helps or hurts, but I'm not motivated yet to do extensive tests. So there are 8x64=512 inputs. And it works! It is much better than hiddenless n-tuple network. 160 hidden units, so around 82k weights. I'm not motivated yet to double the weights which are probably better, but maybe if some better bot appears on the leaderboard...
-
-But this is not the net I have uploaded. I did test other set of inputs, the one without frontier discs, so 6x64=384 inputs and 240 hidden units. It appears the strength is similar to the above net. Maybe frontier discs isn't that important feature that should be done separately.
-
-![othello nn](othellon.png "Othello NN")
-
-In the above image we can see the indexes of the contents of squares (without the frontier discs inputs).
-
-Another feature to test in the future would be stable discs, the ones that can't ever be flipped. But again I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs exactly. Once again, I'm waiting for someone to beat me.
+Looking back at it now, the inputs seem a little complicated. Probably no need for redundant squares that indicate won or lost miniboard.

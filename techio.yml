@@ -10,5 +10,15 @@ plan:
   statement: connect4.md
 - title: Othello
   statement: othello.md
-- title: Ultimate Tic-Tac-Toe
+- title: Ultimate Tic Tac Toe
   statement: uttt.md
+- title: Amazons
+  statement: amazons.md
+- title: Clobber
+  statement: clobber.md
+- title: Nine Men's Morris
+  statement: nmm.md
+- title: Onitama
+  statement: onitama.md
+- title: Hex
+  statement: hex.md
