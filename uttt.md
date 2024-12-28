@@ -5,39 +5,39 @@ UTTT resisted my attempts to NN it for quite long time. One thing was I had alre
 Code for getting the features goes like this, per miniboard:
 
 ```c++
-    vector<int> getInputs(bool isToMoveBoard) {
-      vector<int> inputs(9);
-      for (int i=0; i < 9; i++) {
-        if (isOver()) {
-          int w = getWinner();
-          inputs[i] = w == PLAYER_X ? 0 : w == PLAYER_O ? 1 : 2;
+vector<int> getInputs(bool isToMoveBoard) {
+  vector<int> inputs(9);
+    for (int i=0; i < 9; i++) {
+      if (isOver()) {
+        int w = getWinner();
+        inputs[i] = w == PLAYER_X ? 0 : w == PLAYER_O ? 1 : 2;
+      } else {
+        int p = 1 << (i%9);
+        if (p&gameState) { // it is X
+          inputs[i] = isToMoveBoard ? 3 : 4;
+        } else if (p&(gameState>>9)) { // it is O
+          inputs[i] = isToMoveBoard ? 5 : 6;
         } else {
-          int p = 1 << (i%9);
-          if (p&gameState) { // it is X
-            inputs[i] = isToMoveBoard ? 3 : 4;
-          } else if (p&(gameState>>9)) { // it is O
-            inputs[i] = isToMoveBoard ? 5 : 6;
+          makeMove(PLAYER_X,i%9);
+          bool wouldXWin = isOver(); // if X were to move here, it would won the miniboard
+          undoMove(PLAYER_X,i%9);
+          makeMove(PLAYER_O,i%9);
+          bool wouldOWin = isOver(); // if O were to move here, it would won the miniboard
+          undoMove(PLAYER_O,i%9);
+          if (wouldXWin&&wouldOWin) {
+            inputs[i] = isToMoveBoard ? 9 : 10;
+          } else if (wouldXWin) {
+            inputs[i] = isToMoveBoard ? 11 : 12;
+          } else if (wouldOWin) {
+            inputs[i] = isToMoveBoard ? 13 : 14;
           } else {
-            makeMove(PLAYER_X,i%9);
-            bool wouldXWin = isOver(); // if X were to move here, it would won the miniboard
-            undoMove(PLAYER_X,i%9);
-            makeMove(PLAYER_O,i%9);
-            bool wouldOWin = isOver(); // if O were to move here, it would won the miniboard
-            undoMove(PLAYER_O,i%9);
-            if (wouldXWin&&wouldOWin) {
-                inputs[i] = isToMoveBoard ? 9 : 10;
-            } else if (wouldXWin) {
-                inputs[i] = isToMoveBoard ? 11 : 12;
-            } else if (wouldOWin) {
-                inputs[i] = isToMoveBoard ? 13 : 14;
-            } else {
-                inputs[i] = isToMoveBoard ? 7 : 8;
-            }
+            inputs[i] = isToMoveBoard ? 7 : 8;
           }
         }
       }
-      return inputs;
     }
+  return inputs;
+}
 ```
 
 As you can see, the inputs almost double wether this miniboard is active or not.
