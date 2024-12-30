@@ -2,7 +2,7 @@
 
 UTTT resisted my attempts to NN it for quite long time. One thing was I had already put much effort into improving mcts enhancements for UTTT, so further improvements would be harder to achieve. Another thing was I needed to improve my learning framework and pipeline, as well the inputs and efficient feature extraction from the position. But I won the battle, the NN is much stronger than the mcts ever was. There are 15 possible states for each square (I take empty into account). 81x15=1215 inputs. I did some caching to get them efficiently, as well to calculate the partial difference.
 
-Instead of describing the input, I'll provide the code. The code for getting the features goes like this, per miniboard:
+Instead of describing the inputs, I'll provide the code. The code for getting the features goes like this, per miniboard:
 
 ```c++
 vector<int> getInputs(bool isToMoveBoard) {
