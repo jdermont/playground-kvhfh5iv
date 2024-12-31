@@ -24,7 +24,7 @@ Nevertheless, it was big success. Almost every new iteration was better than pre
 
 ![c4](c4.png "Connect 4")
 
-There are 126 4-tuples in connect 4, overlapping horizontals, verticals and diagonals. Index of tuple 1 from the image is 1012(3)=32, tuple 2 is 0000(3)=0, tuple 3 is 1221(3)=52.
+There are 126 4-tuples in connect 4, overlapping horizontals, verticals and diagonals. Example: Index of tuple 1 from the image is 1012(3)=32, tuple 2 is 0000(3)=0, tuple 3 is 1221(3)=52.
 
 
 # Yavalath
