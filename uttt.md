@@ -44,4 +44,4 @@ As you can see, the inputs almost double wether this miniboard is active or not.
 
 ![uttt](uttt.png "UTTT")
 
-Looking back at it now, the inputs seem a little too complicated. For example no need to use 9 instead of 1 squares to indicate if miniboard is won or lost. I know some guys that use much simpler inputs and achieve good results.
+Looking back at it now, the inputs seem a little too complicated. For example no need to use 9 squares to indicate if miniboard is won or lost, when 1 input would be enough. I know some guys that use much simpler inputs and achieve good results.
