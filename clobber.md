@@ -4,3 +4,4 @@ Raw inputs that take into account white and black stones were weak, to say the l
 
 ![clobber](clobber.png "Clobber")
 
+Example plus-shaped n-tuples. Index of 1 is 1x(012)3=5, index of 2 is 2x(0020)3=12 and index of 3 is **'null'**, because center is empty and it doesn't go to activated inputs.
