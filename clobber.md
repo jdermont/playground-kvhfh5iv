@@ -6,4 +6,4 @@ My bot leads with a little margin. It's surprising, because the scores for the m
 
 ![clobber](clobber.png "Clobber")
 
-Example plus-shaped n-tuples. Index of 1 is 1x(012)3=5, index of 2 is 2x(0020)3=12 and index of 3 is **'null'**, because center is empty and it doesn't go to activated inputs.
+Example plus-shaped n-tuples. Index of 1 is 1x(012)3=5, index of 2 is 2x(0020)3=12 and index of 3 is **'null'**, because center is empty and it doesn't go to activated inputs. If in n-tuple 3 white stone would be in its center, then index would be 1x(1002)=29, and if black were in its center, then index would be 2x(1002)=58.
