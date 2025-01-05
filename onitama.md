@@ -6,6 +6,6 @@ The index on each square can be 0 - empty, 1 - red pawn, 2 - red master, 3 - blu
 
 ![onitama](onitama.png "Onitama")
 
-There are 160 possible indexes per square overall, but because some of them are impossible (i.e. red master can't be attacked by himself), instead of 160x25=4000, there are 3168 inputs to the net. 
+Red to move. There are 160 possible indexes per square overall, but because some of them are impossible (i.e. red master can't be attacked by himself), instead of 160x25=4000, there are 3168 inputs to the net. 
 
-Again, I have to keep my hidden layer small, relatively much computation goes from extracting those indexes from the board. I experimented with various combinations, merging pawn and master attacks, or separating center card attack by pawn and master. Some quickly, some more thoroughly, and this is the above result. As of now, my bot is 1st in the leadeboard with significant lead. For some reason, from all the games I have bots for, I'm especially proud of this one.
+I have to keep my hidden layer small, so the NN inference cost is relatively small. Much computation goes from extracting those indexes from the board. I experimented with various combinations, merging pawn and master attacks, or separating center card attack by pawn and master. Some quickly, some more thoroughly, and this is the above result. As of now, my bot is 1st in the leadeboard with significant lead. For some reason, from all the games I have bots for, I'm especially proud of this one.
