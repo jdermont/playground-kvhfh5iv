@@ -45,6 +45,6 @@ getInputs() {
 }
 ```
 
-There are 12x64=768 inputs for the network.
-
 ![amazons](amazons.png "Amazons")
+
+There are 12x64=768 inputs for the network.
