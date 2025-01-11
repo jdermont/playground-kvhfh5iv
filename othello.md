@@ -2,7 +2,7 @@
 
 ## History
 
-History: [N-Tuple Neural Network](https://repository.essex.ac.uk/3820/1/NTupleOthello.pdf), N-tuples patterns: 4 8-in-row, 1 3x3 corner and their symmetries. Added other features: number of discs, number of frontier discs (discs next to empty space), number of my possible moves and number of enemy possible moves if he were to move. No hidden layer, the network was just perceptron. It was incredibly fast to learn and inference. My bot was among the top. In my first attempts to use neural network, simple one-hots failed miserably, as predicted. Long N-tuples naturally capture distant interdependent features, simple one-hots do not, at least without special tricks.
+History: [N-Tuple Neural Network](https://repository.essex.ac.uk/3820/1/NTupleOthello.pdf), N-tuples patterns: 4 8-in-row, 1 3x3 corner and their symmetries. Added other features: number of discs, number of frontier discs (discs next to empty space), number of my possible moves and number of enemy possible moves if he were to move. No hidden layer, the network was just perceptron. It was incredibly fast to learn and inference. My bot was among the top. In my first attempts to use neural network, simple one-hots failed miserably, as predicted. Long N-tuples naturally capture distant interdependent features, simple one-hots do not, at least not without special tricks.
 
 ![othello](othello.png "Othello N-tuples")
 
