@@ -1,6 +1,8 @@
 # Amazons
 
-Amazons move has 2 'stages', move the queen and then shoot the arrow from the queen in queen-like movement. This leads to high branching factor of several hundred moves per ply. Some engines divide those stages in their search, but for simplicity I do not. My features for the network involve many floodfilling of queen movements, which is fast because I use bitboards. White queen is 1, black queen is 2, arrow is 3. As for the empty squares, first I calculate the movements of the queens in distance one move and two moves. Distance from the queen along the orthogonals and diagonals is 1, and distance from those distances is 2. How to use this information sounds a little complicated for me to describe it, so I write the relevant code:
+Amazons move has 2 'stages', move the queen and then shoot the arrow from the queen in queen-like movement. This leads to high branching factor of several hundred moves per ply. Some engines divide those stages in their search, but for simplicity I do not. This is something that I plan to experiment on.
+
+My features for the network involve many floodfilling of queen movements, which is fast because I use bitboards. White queen is 1, black queen is 2, arrow is 3. As for the empty squares, first I calculate the movements of the queens in distance one move and two moves. Distance from the queen along the orthogonals and diagonals is 1, and then distance from those distances is 2. How to use this information sounds a little complicated for me to describe it, so I write the relevant code:
 
 ```C++
 getInputs() {
