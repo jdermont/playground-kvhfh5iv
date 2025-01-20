@@ -1,8 +1,8 @@
-title: Custom Template
+title: Inputs for neural networks for the board games
 plan:
 - title: Introduction
   statement: introduction.md
-- title: Oware abapa
+- title: Oware Abapa
   statement: oware.md
 - title: Breakthrough
   statement: breakthrough.md

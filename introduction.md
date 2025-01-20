@@ -12,3 +12,15 @@ For many games, I add various features to the inputs. Usually treating certain s
 
 The value networks can be used in various search algorithms, as eval for minimax or eval in mcts rollouts. My main search algorithm is best-first minimax with UCT as presented [here](https://www.codingame.com/playgrounds/55004/best-first-minimax-search-with-uct), nowadays known as [UBFM](https://arxiv.org/abs/2012.10700) but with exploration. Wherever applicable, I use partial updates when expanding node: evaluate base position, then for every child reevaluate only the changes. In the next pages I will present the inputs I use now and some I used before.
 
+# Games
+
+- Oware Abapa
+- Breakthrough
+- Connect 4 & Yavalath
+- Othello
+- Ultimate Tic Tac Toe
+- Amazons
+- Clobber
+- Nine Men's Morris
+- Onitama
+- Hex
