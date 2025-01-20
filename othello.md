@@ -20,4 +20,4 @@ But this is not the net I have uploaded. I did test other set of inputs, the one
 
 In the above image we can see the indexes of the contents of squares (without the frontier discs inputs).
 
-Another feature to test in the future would be stable discs, the ones that can't ever be flipped. But again I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs exactly. Once again, I'm waiting for someone to beat me.
+Another feature to test in the future would be stable discs, the ones that can't ever be flipped. But I'm not motivated enough, too lazy or too dumb to write efficient code that would calculate those stable discs exactly. I'm waiting for someone to beat me.
