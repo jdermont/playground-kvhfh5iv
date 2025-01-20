@@ -15,12 +15,12 @@ The value networks can be used in various search algorithms, as eval for minimax
 # Games
 
 - [Oware Abapa](oware.md)
-- Breakthrough
-- Connect 4 & Yavalath
-- Othello
-- Ultimate Tic Tac Toe
-- Amazons
-- Clobber
-- Nine Men's Morris
-- Onitama
-- Hex
+- [Breakthrough](breakthrough.md)
+- [Connect 4 & Yavalath](connect4.md)
+- [Othello](othello.md)
+- [Ultimate Tic Tac Toe](uttt.md)
+- [Amazons](amazons.md)
+- [Clobber](clobber.md)
+- [Nine Men's Morris](nmm.md)
+- [Onitama](onitama.md)
+- [Hex](hex.md)
