@@ -14,7 +14,7 @@ The value networks can be used in various search algorithms, as eval for minimax
 
 # Games
 
-- Oware Abapa
+- [Oware Abapa](oware.md)
 - Breakthrough
 - Connect 4 & Yavalath
 - Othello
