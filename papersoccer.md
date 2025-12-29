@@ -22,7 +22,7 @@ I haven't stopped working on Paper Soccer. I take some breaks and return to it e
 
 ![papersoccer2](papersoccer2.png "PaperSoccer2")
 
-The inputs are more sparse. Each node's index is now 8 x distance + number of free neighbours of node (or degrees in graph terms). So each node can have one of 64 values, meaning 316 + 105 x 64 = ~7k inputs (in reality a little less). I don't use those in codingame bot, but for my computer. The chart of winrate against previous best bot during training looks like this:
+The inputs are more sparse. Each node's index is now 8 x distance + number of free neighbours of node - 1 (or degrees in graph terms). So each node can have one of 64 values, meaning 316 + 105 x 64 = ~7k inputs (in reality a little less). I don't use those in codingame bot, but for my computer. The chart of winrate against previous best bot during training looks like this:
 
 ![papersoccerchart](papersoccerchart.png "PaperSoccerChart")
 
