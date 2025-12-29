@@ -22,3 +22,5 @@ plan:
   statement: onitama.md
 - title: Hex
   statement: hex.md
+- title: Paper Soccer
+  statement: papersoccer.md

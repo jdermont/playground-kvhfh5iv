@@ -24,3 +24,4 @@ The value networks can be used in various search algorithms, as eval for minimax
 - [Nine Men's Morris](nmm.md)
 - [Onitama](onitama.md)
 - [Hex](hex.md)
+- [Paper Soccer](papersoccer.md)
