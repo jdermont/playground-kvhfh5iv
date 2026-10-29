@@ -8,7 +8,7 @@ Years ago I was testing this mcts bot in [kurnik.pl (playok.com)](https://www.ku
 
 Obviously during my adventures of playing around neural networks I also tried NN for Paper Soccer, but for some reason I couldn't make them work. I withheld trying NN for Paper Soccer for some years, but at some point I tried again, this time for serious. The reason it didn't work were heavy bugs that prevented it from playing and learning at all, like switching players during move or wrong result backpropagation. Had I figured it out then, I would have had workable NN for Paper Soccer years ago. When the NN finally worked, I was astonished by the strength of the bot. Soon it achieved over 95% winrate against the mcts bot in very quick games, and something like 99% in a more sane time controls.
 
-The simplest inputs, like drawn edges and ball position were weak. For that to work I would need to use CNN or maybe graph neural network. So of course I made additional inputs. That is the 'true' distances from the ball to all nodes, the number minimal turns to reach the node if both players were trying to reach it:
+The simplest inputs, like drawn edges and ball position were weak. For that to work I would need to use CNN (quick tests indicate that even relatively small resnet (like 4 blocks, 32 3x3 filters) with simple inputs does indeed learn something useful) or maybe graph neural network. So of course I made additional inputs. That is the 'true' distances from the ball to all nodes, the number minimal turns to reach the node if both players were trying to reach it:
 
 ![papersoccer1](papersoccer1.png "PaperSoccer1")
 
